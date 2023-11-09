@@ -1,9 +1,12 @@
+---
 name: Continuous Integration
 
 on:
   push:
     branches:
-      - main
+      -main
+
+  workflow_dispatch:
 
 jobs:
   test:
@@ -19,10 +22,12 @@ jobs:
           python-version: 3.8
 
       - name: Install Dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pip install -r requirements.txt
 
       - name: Generate HTML Report
-        run: pytest --html=report.html --self-contained-html
+        run: |
+          pytest --html=report.html --self-contained-html
         continue-on-error: true
 
       - name: Upload Test Artifacts
