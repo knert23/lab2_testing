@@ -48,3 +48,13 @@ class TestLibraryFunction:
     def test_calculator(self, first_number, second_number, operation, result, expectation):
         with expectation:
             assert LibraryFunction().calculator(first_number, second_number, operation) == result
+
+    @pytest.mark.parametrize(
+        "first_number, second_number, operation, result",
+        [
+            (210, "", '+', 420, )
+        ]
+    )
+    def test_calculator_2(self, first_number, second_number, operation, result):
+        assert LibraryFunction().calculator(first_number, second_number, operation) == result
+
